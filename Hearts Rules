@@ -1,0 +1,29 @@
+Programming 2
+Program 2, card game
+Group: The Blackjacks
+Hearts game rules:
+
+The object of the game:
+Players do not want to end up with tricks containing hearts or the queen of spades.
+
+Number of players:
+Three to seven (four is the best and for the project this is what I recommend).
+
+The cards and the deal:
+You use a standard deck of 52 cards. Each player is dealt the same number of cards. For example, four people are playing then each gets thirteen cards.
+
+How to deal:
+The players are chosen randomly. The dealer then deals all the cards out clockwise, one card at a time, with each placed face down.
+
+Passing the cards:
+Before a hand is played, each player chooses three cards, and passes them to another player. The first the players pass the cards to the player on their right, then before the second hand the players pass to the player on their left, then before the third hand the players pass to the player across from them, and for the four hand the players don’t pass their cards to anyone and play the cards that they were dealt.
+
+The play of the game:
+The player with the 2 of clubs goes first. Then the player to the left goes next. Everyone must follow suit if they can’t follow suit then that player can player any card he/she wants as long as it is not hearts or the queen of spades.
+Hearts cannot be lead until the suit has been broken (played out of hand, not following suit), unless the player who must lead has nothing but hearts remaining in their hand.
+The hand keeps going until all cards are played from the player’s hand.
+Scoring:
+At the end of each round, each player counts the number of hearts that they have, and taking the queen of spades costs that player to gain 13 points. The game ends when one player reaches or exceeds 100 points. The winner is the player with the fewest points.
+
+Shooting the moon:
+If one player manages to get all 26 points for that deal then that player gets zero points for that deal and all other players get 26 points instead. 
