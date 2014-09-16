@@ -1,0 +1,18 @@
+Programming 2
+Program 2, Card Game
+Group: The Blackjacks
+Hearts Program Layout:
+
+We will assume that there are only 4 players.
+
+1) Build and shuffle the deck.
+	1) Deck contains 52 cards with 2-A, All four suits.
+	2) Randomize the order of the cards.
+2) Deal 13 cards to each player, 1 card at a time, in a clockwise method.
+3) Pass 3 cards to another player, which player is determined by the game number.
+	1) Left, Across, Right, No trade.
+4) Game play.
+	1) 13 rounds, 1 for each of the cards in your hand.
+	2) 
+5) Score each player based on the number of tricks they collected.
+6) Repeat back to 1. 

@@ -1,7 +1,7 @@
 Programming 2
-Program 2, card game
+Program 2, Card Game
 Group: The Blackjacks
-Hearts game rules:
+Hearts Game Rules:
 
 The object of the game:
 Players do not want to end up with tricks containing hearts or the queen of spades.
