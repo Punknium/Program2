@@ -13,6 +13,28 @@ We will assume that there are only 4 players.
 	1) Left, Across, Right, No trade.
 4) Game play.
 	1) 13 rounds, 1 for each of the cards in your hand.
-	2) 
+	2) For round one the 2 of clubs leads.
+	3) For the next 12 rounds the person the collected the last trick
+		will lead the round.
+	4) The first card of the round will determine the suit for that round.
+	5) Hearts can not be lead until a heart has been played.
+	6) If you have a card of suit you must play it, if not you can play any other card.
+	6) Player with the highest card of suit will collect the trick. 
 5) Score each player based on the number of tricks they collected.
+	1) 1 point for each Heart you collected.
+	2) 13 points for the Queen of Spades.
+	3) 26 points to everyone else, if one player gets all 26 points.
 6) Repeat back to 1. 
+
+
+Objects in Use
+
+1) Card Object for all of the 52 cards.
+2) Deck Object is used as a collection of all 52 cards.
+	1) Allows you to shuffle and draw from it.
+	2) Allows you to reset it after the round.
+3) Trick Object that a Player receives at the end of a round.
+4) Player Object
+	1) Holds the hand
+	2) Keeps track of their score
+	3) Keeps track of the tricks they collected
