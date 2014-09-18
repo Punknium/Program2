@@ -10,7 +10,7 @@ We will assume that there are only 4 players.
 	2) Randomize the order of the cards.
 2) Deal 13 cards to each player, 1 card at a time, in a clockwise method.
 3) Pass 3 cards to another player, which player is determined by the game number.
-	1) Left, Across, Right, No trade.
+	1) Right, Left, Across, No trade.
 4) Game play.
 	1) 13 rounds, 1 for each of the cards in your hand.
 	2) For round one the 2 of clubs leads.
