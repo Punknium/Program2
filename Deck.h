@@ -1,26 +1,30 @@
 /*
-  File: Deck.h
-  Author:  Ryder Smith
-  Course:  COMP 220, Computer Programming II
-  Date:    20 September 2014
+  File:			Deck.h
+  Author:		Ryder Smith
+  Course:		COMP 220, Computer Programming II
+  Date:			20 September 2014
   Description:  This class is used to manage the deck of cards.
 */
 
 #ifndef ___DECK_H
 #define ___DECK_H
 
-#include Card.h
+#include "Card.h"
+#include "Player.h"
+#include <vector>
+using std::vector;
 
 class Deck {
 public:
-	//Function is used to shuffle the deck
+	//Puts all of the needed cards into the deck
+	Deck();
+	//Shuffles the deck.
 	void shuffleDeck();
-	//Function picks a random card from the deck and gives it to a player
+	//Picks a card from the deck, gives it to a player, and removes it from the deck.
 	void drawCard(Player& p);
 private:
 	static const int CARDS_IN_A_DECK = 52;
-	Card[] deck = new Card[CARDS_IN_A_DECK];
+	vector<Card> deck;
 };
-
 
 #endif

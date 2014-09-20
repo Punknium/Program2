@@ -1,8 +1,8 @@
 /*
-  File: Trick.h
-  Author:  Ryder Smith
-  Course:  COMP 220, Computer Programming II
-  Date:    20 September 2014
+  File:			Trick.h
+  Author:		Ryder Smith
+  Course:		COMP 220, Computer Programming II
+  Date:			20 September 2014
   Description:  This class collects the cards during the round.
 */
 
@@ -13,6 +13,8 @@
 
 class Trick {
 public:
+	//Used to calculate the number of points to give to the player.
+	int calculatePoints();
 	
 private:
 	Card leadCard;

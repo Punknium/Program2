@@ -1,8 +1,8 @@
 /*
-  File: Card.h
-  Author:  Dorian P. Yeager
-  Course:  COMP 220, Computer Programming II
-  Date:    30 August 2013
+  File:			Card.h
+  Author:		Dorian P. Yeager
+  Course:		COMP 220, Computer Programming II
+  Date:			30 August 2013
   Description:  This file provides the definitions of the data types
                 Suit, Value, and Card.
 */
@@ -26,8 +26,8 @@ public:
 	static string valueName (Value v);
 	string name() { return valueName (faceValue) + " of " + suitName(suit);}
 private:
-		Suit suit;
-		Value faceValue;
+	Suit suit;
+	Value faceValue;
 };
 
 

@@ -1,17 +1,17 @@
 /*
-  File: Player.h
-  Author:  Ryder Smith
-  Course:  COMP 220, Computer Programming II
-  Date:    20 September 2014
+  File:			Player.h
+  Author:		Ryder Smith
+  Course:		COMP 220, Computer Programming II
+  Date:			20 September 2014
   Description:  This class is used to each of the players.
 */
 
 #ifndef ___PLAYER_H
 #define ___PLAYER_H
 
-#include Card.h
-#include Trick.h
-#include <vector>
+#include "Card.h"
+#include "Trick.h"
+#include <Vector>
 using std::vector;
 
 class Player {
@@ -22,13 +22,15 @@ public:
 	void receiveCard(const Card& c);
 	//Is used at the end of each round to add to the player's score.
 	void collectTrick(const Trick& t);
+	//Used to check if a player has a certain card in his/her hand.
+	bool hasCard(const Card& c);
 	//Getter for the player's number
 	int getPlayerNumber();
 	//Getter for the player's score.
 	int getPlayerScore();
 private:
-	Vector<Card> hand;
-	int score = 0;
+	vector<Card> hand;
+	int score;
 	int playerNumber;
 };
 
