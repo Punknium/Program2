@@ -29,7 +29,7 @@ We will assume that there are only 4 players.
 
 Objects in Use
 
-1) Card Object for all of the 52 cards.
+1) Card Object one for all of the 52 cards.
 2) Deck Object is used as a collection of all 52 cards.
 	1) Allows you to shuffle and draw from it.
 	2) Allows you to reset it after the round.
