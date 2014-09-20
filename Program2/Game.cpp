@@ -8,8 +8,9 @@
 
 #include "stdafx.h"
 #include "Game.h"
-#include "Deck.h"
-#include "Player.h"
+
+Player Game::players[4];
+int Game::leadPlayer;
 
 void Game::startGame(){
 	//Sets up the players
@@ -38,5 +39,39 @@ void Game::startGame(){
 }
 
 void Game::startRound(){
+	//Sets up the trick for the round
+	Trick t(leadPlayer);
 
+	//Prompts each user for a card to be played.
+	int i = leadPlayer;
+	do{
+		//cout << i << "\n";
+		askForCard(players[i], t);
+		i++;
+		if(i==4)i=0;
+	}while(i != leadPlayer && i < 5);
+	
+	leadPlayer = t.getCollector();
+	if(leadPlayer){
+		if(leadPlayer != 0) players[0].addToPlayerScore(26);
+		if(leadPlayer != 1) players[1].addToPlayerScore(26);
+		if(leadPlayer != 2) players[2].addToPlayerScore(26);
+		if(leadPlayer != 3) players[3].addToPlayerScore(26);
+	}else{
+		players[leadPlayer].collectTrick(t);
+	}
+
+}
+
+void Game::askForCard(Player &p, Trick &t){
+	//Prompt for card
+	//TODO: list cards
+	Card toBeUsed;
+	if(p.canPlayCard(toBeUsed)){
+		p.playCard(toBeUsed);
+		t.addCard(p.getPlayerNumber(), toBeUsed);
+	}else{
+		//Print error
+		askForCard(p, t);
+	}
 }

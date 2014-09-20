@@ -13,15 +13,22 @@
 
 class Trick {
 public:
+	Trick();
+	Trick(int leadPlayer);
 	//Used to calculate the number of points to give to the player.
 	int calculatePoints();
-	
+	//Used when a player lays down a card.
+	void addCard(int playerNumber, const Card& c);
+	//Returns who should pick up the trick
+	int getCollector();
+	//Returns if hearts can be lead or not.
+	bool canHeartsLead();
+	//Returns true if the moon was shot.
+	bool isTheMoonShot();
 private:
-	Card leadCard;
-	Card card2;
-	Card card3;
-	Card card4;
+	Card cards[4];
 	int leadPlayer;
+	static bool heartsLead;
 };
 
 

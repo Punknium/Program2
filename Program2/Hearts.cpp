@@ -1,17 +1,12 @@
 // Program2.cpp : Defines the entry point for the console application.
 //
 #include "stdafx.h"
-#include <iostream>
-//#include "Game.h"
-#include "Card.h"
-
-using std::cout;
+#include "Game.h"
 
 int main(){
-	//Game::startGame();
-	Card c;
-	cout << c.name();
+	Game::startGame();
 	system("pause");
 	return 0;
+
 }
 
