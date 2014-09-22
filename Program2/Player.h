@@ -29,7 +29,7 @@ public:
 	//Used to check if a player has a certain card in his/her hand.
 	bool hasCard(const Card& c);
 	//Used to check if the player is allowed to play the selected card.
-	bool canPlayCard(const Card& c);
+	bool canPlayCard(const Card& c, const Trick& t);
 	//Getter for the player's number
 	int getPlayerNumber();
 	//Getter for the player's score.

@@ -25,6 +25,10 @@ public:
 	bool canHeartsLead();
 	//Returns true if the moon was shot.
 	bool isTheMoonShot();
+	//Returns the card that was lead with.
+	Card leadCard();
+	//Returns the lead player's number
+	int getLeadPlayer();
 private:
 	Card cards[4];
 	int leadPlayer;
