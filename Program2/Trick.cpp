@@ -3,7 +3,8 @@
   Author:		Ian Finlay
   Course:		COMP 220, Computer Programming II
   Date:			9/20/2014
-  Description:  This file provides the functions for the hearts game.
+  Description:  This file provides the functions for the trick and scoring 
+				parts of the hearts game.
 */
 #include "stdafx.h"
 #include "Trick.h"
