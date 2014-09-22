@@ -28,11 +28,11 @@ Functions starts here!!
 void Deck::shuffleDeck() //Shuffles the deck
 {
 	srand(time(0));
-	const int randMax = 52;
-	for (int i = 1; i < randMax; i++)
+	const int CARDS_IN_A_DECK = 52;
+	for (int i = 1; i < CARDS_IN_A_DECK; i++)
 	{
 		int randNum = rand() % 51 + 1;
-		swap(Cards[i], Cards[randNum]);
+		swap(deck[i], deck[randNum]);
 	}
 }
 
@@ -41,4 +41,6 @@ Deals the cards out to the players.
 */
 void Deck::drawCard(Player& p)
 {
+	int i = 0;
+	p.receiveCard() = deck[i];
 }
