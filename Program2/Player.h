@@ -21,15 +21,15 @@ public:
 	//Each player must have a unique playerNumber.
 	Player(int playerNumber);
 	//Removes card from the player's hand
-	void playCard(const Card& c);
+	void playCard(Card& c); //Removed the const cause the getter did NOT like it.
 	//Is used when a card is needed to be added to the hand.
 	void receiveCard(const Card& c);
 	//Is used at the end of each round to add to the player's score.
-	void collectTrick(const Trick& t);
+	void collectTrick(Trick& t);
 	//Used to check if a player has a certain card in his/her hand.
-	bool hasCard(const Card& c);
+	bool hasCard(Card& c); // Removed Const
 	//Used to check if the player is allowed to play the selected card.
-	bool canPlayCard(const Card& c, const Trick& t);
+	bool canPlayCard(Card& c, Trick& t); // Removed Const, Getter functions are having problems with this.
 	//Getter for the player's number
 	int getPlayerNumber();
 	//Getter for the player's score.
