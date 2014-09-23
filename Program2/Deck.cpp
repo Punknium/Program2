@@ -24,10 +24,9 @@ Functions starts here!!
 void Deck::shuffleDeck() //Shuffles the deck
 {
 	srand(time(0));
-	const int CARDS_IN_A_DECK = 52;//I DECLARED THIS ALREADY LOOK AT THE HEADER FILES
-	for (int i = 1; i < CARDS_IN_A_DECK; i++)//ARRAYS START AT 0
+	for (int i = 0; i < CARDS_IN_A_DECK; i++)//ARRAYS START AT 0 - fixed
 	{
-		int randNum = rand() % 51 + 1;//USE YOUR CONSTANTS
+		int randNum = rand() % CARDS_IN_A_DECK;//USE YOUR CONSTANTS - fixed
 		swap(deck[i], deck[randNum]);
 	}
 }

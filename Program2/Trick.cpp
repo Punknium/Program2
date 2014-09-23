@@ -18,3 +18,6 @@ bool Trick::isTheMoonShot(){return false;}
 bool Trick::canHeartsLead(){return false;}
 Card Trick::leadCard(){return Card();}
 int Trick::getLeadPlayer(){return 0;}
+
+//******functions start here********
+
