@@ -7,6 +7,5 @@ int main(){
 	Game::startGame();
 	system("pause");
 	return 0;
-
 }
 

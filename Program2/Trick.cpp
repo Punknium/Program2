@@ -16,5 +16,5 @@ void Trick::addCard(int playerNumber, const Card& c){}
 int Trick::getCollector(){return 0;}
 bool Trick::isTheMoonShot(){return false;}
 bool Trick::canHeartsLead(){return false;}
-Card Trick::leadCard(){}
-int Trick::getLeadPlayer(){}
+Card Trick::leadCard(){return Card();}
+int Trick::getLeadPlayer(){return 0;}

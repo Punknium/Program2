@@ -12,15 +12,18 @@
 #include "Trick.h"
 #include "Player.h"
 #include "Deck.h"
+#include "Interface.h"
 
 class Game {
 public:
 	static void startGame();
 	static void startRound();
 	static void askForCard(Player &p, Trick &t);
+	static void Game::showHand(Player &p);
 private:
 	static Player players[4];
 	static int leadPlayer;
+	static Interface interfase;
 };
 
 #endif

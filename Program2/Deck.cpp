@@ -17,10 +17,6 @@ using std::swap;
 
 Deck::Deck(){}
 
-void Deck::shuffleDeck(){}
-
-void Deck::drawCard(Player& p){}
-
 /*
 Functions starts here!!
 */
@@ -28,10 +24,10 @@ Functions starts here!!
 void Deck::shuffleDeck() //Shuffles the deck
 {
 	srand(time(0));
-	const int CARDS_IN_A_DECK = 52;
-	for (int i = 1; i < CARDS_IN_A_DECK; i++)
+	const int CARDS_IN_A_DECK = 52;//I DECLARED THIS ALREADY LOOK AT THE HEADER FILES
+	for (int i = 1; i < CARDS_IN_A_DECK; i++)//ARRAYS START AT 0
 	{
-		int randNum = rand() % 51 + 1;
+		int randNum = rand() % 51 + 1;//USE YOUR CONSTANTS
 		swap(deck[i], deck[randNum]);
 	}
 }
@@ -42,5 +38,5 @@ Deals the cards out to the players.
 void Deck::drawCard(Player& p)
 {
 	int i = 0;
-	p.receiveCard() = deck[i];
+	p.receiveCard(deck[i]);//LOOK AT THE HEADER FILES
 }

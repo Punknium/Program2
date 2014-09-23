@@ -8,11 +8,16 @@
 
 #include "stdafx.h"
 #include "Game.h"
+#include "Interface.h"
 
 Player Game::players[4];
 int Game::leadPlayer;
+Interface Game::interfase;
 
 void Game::startGame(){
+	interfase.drawBoard();
+	interfase.drawHands();
+	interfase.hideHands();
 	//Sets up the players
 	for(int i = 0; i<4; i++){
 		players[i] = Player(i);
@@ -45,10 +50,11 @@ void Game::startRound(){
 	//Prompts each user for a card to be played.
 	int i = leadPlayer;
 	do{
-		//cout << i << "\n";
+		showHand(players[i]);
 		askForCard(players[i], t);
 		i++;
 		if(i==4)i=0;
+		interfase.hideHands();
 	}while(i != leadPlayer && i < 5);
 	
 	leadPlayer = t.getCollector();
@@ -63,13 +69,20 @@ void Game::startRound(){
 
 }
 
+void Game::showHand(Player &p){
+	for(int i = 0;i < p.getHand().size();i++){
+		interfase.drawCard(p.getHand()[i], p.getPlayerNumber(), i);
+	}
+}
+
 void Game::askForCard(Player &p, Trick &t){
 	//Prompt for card
 	//TODO: list cards
 	Card toBeUsed;
-	if(p.canPlayCard(toBeUsed)){
+	if(p.canPlayCard(toBeUsed, t)){
 		p.playCard(toBeUsed);
 		t.addCard(p.getPlayerNumber(), toBeUsed);
+		interfase.drawCard(toBeUsed, 4, p.getPlayerNumber());
 	}else{
 		//Print error
 		askForCard(p, t);

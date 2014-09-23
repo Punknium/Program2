@@ -31,9 +31,7 @@
 *.ipch
 *.idb
 *.pdb
-*.idb
 *.sdf
 *.opensdf
-*.sdf
-*.sdf
 *.suo
+*.ilk
