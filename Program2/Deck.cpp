@@ -36,6 +36,5 @@ Deals the cards out to the players.
 */
 void Deck::drawCard(Player& p)
 {
-	int i = 0;
-	p.receiveCard(deck[i]);//LOOK AT THE HEADER FILES
+	p.getHand();
 }
