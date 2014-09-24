@@ -17,9 +17,9 @@ Player::Player(int pn){ //Changed the variable name, didnt like how it was exact
 	playerNumber = pn;
 }
 void Player::playCard(Card& c){ //Changed from const because getter has an issue with it.
-	for(int i; i < hand.size; i ++)
+	for(int i=0; i < hand.size(); i ++)
 	{
-		if((hand[i].getValue() == c.getValue)&&(hand[i].getSuit() == c.getSuit()))
+		if((hand[i].getValue() == c.getValue())&&(hand[i].getSuit() == c.getSuit()))
 		{
 			hand.erase(hand.begin() + i);
 		}
@@ -34,9 +34,9 @@ void Player::collectTrick(Trick& t)
 }
 bool Player::hasCard(Card& c) // Removed const
 {
-	for(int i; i < hand.size; i ++)
+	for(int i=0; i < hand.size(); i ++)
 	{
-		if((hand[i].getValue() == c.getValue)&&(hand[i].getSuit() == c.getSuit()))
+		if((hand[i].getValue() == c.getValue())&&(hand[i].getSuit() == c.getSuit()))
 		{
 			return true;
 		}
@@ -45,12 +45,12 @@ bool Player::hasCard(Card& c) // Removed const
 }
 bool Player::canPlayCard(Card &c, Trick& t)
 {
-	if(t.leadCard().getSuit == c.getSuit())
+	if(t.leadCard().getSuit() == c.getSuit())
 		return true;
 	else
-		for(int i; i < hand.size(); i++)
+		for(int i=0; i < hand.size(); i++)
 		{
-			if(t.leadCard().getSuit() == hand[i].getSuit)
+			if(t.leadCard().getSuit() == hand[i].getSuit())
 				return false;
 		}
 

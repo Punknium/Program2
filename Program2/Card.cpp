@@ -16,7 +16,7 @@ string Card::suitName (Suit s) {
 		case diamonds:	return "Diamonds";
 		case hearts:	return "Hearts";
 		case spades:	return "Spades";
-		default: throw std::out_of_range("Suit value out of range");
+		default:		return "Clubs";//throw std::out_of_range("Suit value out of range");
 	}
 }
 
@@ -35,7 +35,7 @@ string Card::valueName (Value v) {
 	case jack:	return "Jack";
 	case queen: return "Queen";
 	case king:	return "King";
-	default: throw std::out_of_range("Face value out of range");
+	default:	return "Two";//throw std::out_of_range("Face value out of range");
 	}
 }
 
