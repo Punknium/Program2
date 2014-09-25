@@ -9,6 +9,13 @@
 #include "stdafx.h"
 #include "Game.h"
 #include "Interface.h"
+#include <iostream>
+#include <string>
+
+using std::cout;
+using std::cin;
+using std::string;
+using std::to_string;
 
 Player Game::players[4];
 int Game::leadPlayer;
@@ -17,7 +24,6 @@ Interface Game::interfase;
 void Game::startGame(){
 	interfase.drawBoard();
 	interfase.drawHands();
-	interfase.hideHands();
 	//Sets up the players
 	for(int i = 0; i<4; i++){
 		players[i] = Player(i);
@@ -39,11 +45,14 @@ void Game::startGame(){
 	}
 	//Runs through all of the rounds
 	for(int i = 0; i < 13; i++){
+
 		startRound();
 	}
 }
 
 void Game::startRound(){
+	interfase.hideHands();
+	interfase.hideTrick();
 	//Sets up the trick for the round
 	Trick t(leadPlayer);
 
@@ -54,11 +63,11 @@ void Game::startRound(){
 		askForCard(players[i], t);
 		i++;
 		if(i==4)i=0;
-		interfase.hideHands();
+		//interfase.hideHands();
 	}while(i != leadPlayer && i < 5);
 	
 	leadPlayer = t.getCollector();
-	if(leadPlayer){
+	if(t.isTheMoonShot()){
 		if(leadPlayer != 0) players[0].addToPlayerScore(26);
 		if(leadPlayer != 1) players[1].addToPlayerScore(26);
 		if(leadPlayer != 2) players[2].addToPlayerScore(26);
@@ -67,6 +76,10 @@ void Game::startRound(){
 		players[leadPlayer].collectTrick(t);
 	}
 
+	interfase.clearError();
+	string output = "Player " + to_string(leadPlayer) + " has collected the trick with a score of " + to_string(t.calculatePoints()) + ".\n";
+	interfase.printText(output.c_str());
+	system("pause");
 }
 
 void Game::showHand(Player &p){
@@ -77,14 +90,25 @@ void Game::showHand(Player &p){
 
 void Game::askForCard(Player &p, Trick &t){
 	//Prompt for card
+	//system("pause");   
 	//TODO: list cards
+	int selection = 0;
+
+	interfase.printText("Please select a card (1-13): ");
+	cin.clear();
+	cin >> selection;
+	selection--;
+
 	Card toBeUsed;
-	if(p.canPlayCard(toBeUsed, t)){
+	if(selection>=0 && selection<p.getHand().size()-1) toBeUsed = p.getHand().at(selection);
+
+	if(p.canPlayCard(toBeUsed, t) && (selection>=0 && selection<=p.getHand().size()-1)){
 		p.playCard(toBeUsed);
 		t.addCard(p.getPlayerNumber(), toBeUsed);
 		interfase.drawCard(toBeUsed, 4, p.getPlayerNumber());
 	}else{
-		//Print error
+		interfase.printError("Choose a different card!");
 		askForCard(p, t);
+		interfase.clearError();
 	}
 }

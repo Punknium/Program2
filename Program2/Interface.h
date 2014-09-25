@@ -17,11 +17,17 @@ public:
 	Interface();
 	void drawBoard();
 	void setCursorPos(int x, int y);
+	void setColor(int f, int b);
 	void drawHands();
 	void hideHands();
+	void hideTrick();
 	void drawCard(Card& c, int hand, int slot);
 	char suitToChar(Suit s);
 	char valueToChar(Value s);
+	void printText(const char *text);
+	void printError(const char *text);
+	void clearText();
+	void clearError();
 private:
 
 };

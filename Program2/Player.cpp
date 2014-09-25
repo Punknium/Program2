@@ -16,6 +16,11 @@ Player::Player(){
 Player::Player(int pn){ //Changed the variable name, didnt like how it was exactly the same as an out of scope variable that was being referenced
 	playerNumber = pn;
 }
+
+/*
+If the last card in the vector is played it doesn't remove it
+*/
+
 void Player::playCard(Card& c){ //Changed from const because getter has an issue with it.
 	for(int i=0; i < hand.size(); i ++)
 	{
@@ -43,8 +48,13 @@ bool Player::hasCard(Card& c) // Removed const
 	}	
 	return false;
 }
+
+/*
+Needs some work
+*/
 bool Player::canPlayCard(Card &c, Trick& t)
 {
+	return true;//REMOVE THIS
 	if(t.leadCard().getSuit() == c.getSuit())
 		return true;
 	else

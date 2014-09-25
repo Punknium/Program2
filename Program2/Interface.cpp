@@ -39,10 +39,35 @@ const int centerW = width/2;
 const int centerH = height/2;
 
 Interface::Interface(){
-	system("mode con: cols=80 lines=31");
+	system("mode con: cols=80 lines=32");
 	system("cls");
 	system("title Hearts");
 	system("color 2f");
+}
+
+
+void Interface::printError(const char *text){
+	clearError();
+	setColor(12,0);
+	setCursorPos(0, height+1);
+	cout << text;
+	setColor(15,2);
+}
+
+void Interface::printText(const char *text){
+	clearText();
+	setCursorPos(0, height);
+	cout << text;
+}
+
+void Interface::clearText(){
+	setCursorPos(0, height);
+	for(int i=0;i<width-1;i++)cout<<" ";
+}
+
+void Interface::clearError(){
+	setCursorPos(0, height+1);
+	for(int i=0;i<width-1;i++)cout<<" ";
 }
 
 //Default windows size is 80 x 25
@@ -93,8 +118,20 @@ void Interface::drawHands(){
 		cout << shl << shl << shl << (char)208;
 	}
 	cout << shl << shl << shl << slr;
+	
+	setCursorPos(centerW-26, 5);
+	for(int i=1; i<=13;i++){
+		cout << "  " << i;
+		if(i<10) cout << " ";
+	}
 
 	//Bottom set of cards
+	setCursorPos(centerW-26, height-6);
+	for(int i=1; i<=13;i++){
+		cout << "  " << i;
+		if(i<10) cout << " ";
+	}
+
 	setCursorPos(centerW-26, height-5);
 	cout << sul;
 	for(int i=0;i<12;i++){
@@ -137,6 +174,11 @@ void Interface::drawHands(){
 	setCursorPos(1,27);
 	cout << sll << shl << shl << shl << shl << slr;
 
+	for(int i=1; i<=13;i++){
+		setCursorPos(8, i*2);
+		cout << i;
+	}
+
 	//Right set of cards
 	setCursorPos(width-7,1);
 	cout << sul << shl << shl << shl << shl << sur;
@@ -150,7 +192,14 @@ void Interface::drawHands(){
 	cout << svl << ' ' << '1' << (char)6 << ' ' << svl;
 	setCursorPos(width-7,27);
 	cout << sll << shl << shl << shl << shl << slr;
+	
+	for(int i=1; i<=13;i++){
+		setCursorPos(width-9, i*2);
+		cout << i;
+	}
 
+
+	//Center cards
 	setCursorPos(centerW, centerH-4);
 	cout << sul << shl << shl << shl << sur;
 	setCursorPos(centerW, centerH-3);
@@ -217,6 +266,10 @@ void Interface::hideHands(){
 		cout << block << block;
 	}
 
+	setCursorPos(0, height);
+}
+
+void Interface::hideTrick(){
 	setCursorPos(centerW+3, centerH+2);
 	cout << "  ";
 	setCursorPos(centerW-5, centerH-2);
@@ -229,8 +282,7 @@ void Interface::hideHands(){
 	cout << ' ';
 	setCursorPos(centerW+2, centerH-2);
 	cout << ' ';
-
-
+	
 	setCursorPos(0, height);
 }
 
@@ -324,4 +376,18 @@ void Interface::setCursorPos(int x, int y){
 	COORD coord = {x, y};
 	//Set the position
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
+}
+
+
+/*	0 = Black       8		= Gray
+    1 = Blue        9		= Light Blue
+    2 = Green       A(10)	= Light Green
+    3 = Aqua        B(11)	= Light Aqua
+    4 = Red         C(12)	= Light Red
+    5 = Purple      D(13)	= Light Purple
+    6 = Yellow      E(14)	= Light Yellow
+    7 = White       F(15)	= Bright White */
+void Interface::setColor(int f, int b){
+	int k = f + b*16;
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), k);
 }

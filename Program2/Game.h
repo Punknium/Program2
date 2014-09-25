@@ -19,7 +19,8 @@ public:
 	static void startGame();
 	static void startRound();
 	static void askForCard(Player &p, Trick &t);
-	static void Game::showHand(Player &p);
+	static void showHand(Player &p);
+	static void showTrick(Trick &t);
 private:
 	static Player players[4];
 	static int leadPlayer;
