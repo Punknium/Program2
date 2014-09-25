@@ -1,6 +1,6 @@
 /*
   File:			Player.cpp
-  Author:		AlexanderHutchison
+  Author:		Alexander Hutchison
   Course:		COMP 220, Computer Programming II
   Date:			9/23/2014
   Description:  This file provides the code and functionality of the player.
@@ -20,7 +20,7 @@ Player::Player(int pn){ //Changed the variable name, didnt like how it was exact
 }
 
 /*
-If the last card in the vector is played it doesn't remove it
+If the last card in the vector is played it doesn't remove it--fixed
 */
 
 void Player::playCard(Card& c){ //Changed from const because getter has an issue with it.
@@ -52,7 +52,7 @@ bool Player::hasCard(Card& c) // Removed const
 }
 
 /*
-Needs some work
+Needs some work--fixed
 */
 bool Player::canPlayCard(Card &c, Trick& t)
 {

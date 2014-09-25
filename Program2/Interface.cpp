@@ -40,9 +40,13 @@ const int centerW = width/2;
 const int centerH = height/2;
 
 Interface::Interface(){
+	//Sets the window size
 	system("mode con: cols=80 lines=32");
+	//Clears the screen
 	system("cls");
+	//Sets the title
 	system("title Hearts");
+	//Sets the background and text color
 	system("color 2f");
 }
 
@@ -69,9 +73,11 @@ void Interface::drawScore(Player& p, int& totScore){
 
 void Interface::printError(const char *text){
 	clearError();
+	//Sets the text color to light red and the background to black
 	setColor(12,0);
 	setCursorPos(0, height+1);
 	cout << text;
+	//Resets the colors
 	setColor(15,2);
 }
 
@@ -93,26 +99,30 @@ void Interface::clearError(){
 
 //Default windows size is 80 x 25
 void Interface::drawBoard(){
+	//Clears the screen
 	system("cls");
-	//Top
+	//Prints the top of the board
 	cout << dul;
 	for(int i=2;i<width;i++) cout << dhl;
 	cout << dur;
-	//Sides
+	//Prints the sides of the board
 	for(int j=1;j<height-1;j++){
 		cout << dvl;
 		for(int i=2;i<width;i++) cout << " ";
 		cout << dvl;
 	}
-	//Bottom
+	//Prints the sides of the board
 	cout << dll;
 	for(int i=2;i<width;i++) cout << dhl;
 	cout << dlr;
 }
 
 //Wrote by Ian
+//Used to show all of the rules before the game starts
 void Interface::drawRules(){
+	//Resizes the windows so all lines are shown
 	system("mode con: cols=80 lines=42");
+	//Couts all the rules
 	cout << "This is the game: HEARTS" << endl
 		<< "The object of the game is to be the player" << endl
 		<< "with the lowest score." << endl << endl;
@@ -152,13 +162,15 @@ void Interface::drawRules(){
 		<< "gets zero points for that deal and all other players get 26 points instead." << endl << endl;
 
 	cout << "T suit is equal to Ten of suit." << endl << endl;
+	//Waits for user
 	system("pause");
+	//Resets windows size
 	system("mode con: cols=80 lines=32");
 }
 
 void Interface::drawHands(){
 	
-	//Top set of cards
+	//draws the top set of cards(player 2)
 	setCursorPos(centerW-26, 1);
 	cout << sul;
 	for(int i=0;i<12;i++){
@@ -193,7 +205,7 @@ void Interface::drawHands(){
 		if(i<10) cout << " ";
 	}
 
-	//Bottom set of cards
+	//Draws the bottom set of cards(player 0)
 	setCursorPos(centerW-26, height-6);
 	for(int i=1; i<=13;i++){
 		cout << "  " << i;
@@ -228,7 +240,7 @@ void Interface::drawHands(){
 	}
 	cout << shl << shl << shl << slr;
 
-	//Left set of cards
+	//Draws the left set of cards(player 1)
 	setCursorPos(1,1);
 	cout << sul << shl << shl << shl << shl << sur;
 	for(int i=0;i<12;i++){
@@ -247,7 +259,7 @@ void Interface::drawHands(){
 		cout << i;
 	}
 
-	//Right set of cards
+	//Draws the right set of cards(player 3)
 	setCursorPos(width-7,1);
 	cout << sul << shl << shl << shl << shl << sur;
 	for(int i=0;i<12;i++){
@@ -267,7 +279,7 @@ void Interface::drawHands(){
 	}
 
 
-	//Center cards
+	//Draws the center cards(The trick)
 	setCursorPos(centerW, centerH-4);
 	cout << sul << shl << shl << shl << sur;
 	setCursorPos(centerW, centerH-3);
@@ -299,14 +311,16 @@ void Interface::drawHands(){
 	cout << svl << ' ' << 'A' << (char)4 << ' ' << svl;
 	setCursorPos(centerW-7, centerH-1);
 	cout << sll << shl << shl << shl << shl << slr;
-
+	
+	//Resets text position
 	setCursorPos(0, height);
 }
 
 void Interface::hideHands(){
+	//Hashed block used to overwrite the face values
 	char block = 176;
 
-	//Top cards
+	//Hides the top cards
 	for(int i=0;i<13;i++){
 		setCursorPos(centerW-24+i*4, 2);
 		cout << block;
@@ -314,7 +328,7 @@ void Interface::hideHands(){
 		cout << block;
 	}
 
-	//Bottom cards
+	//Hides the bottom cards
 	for(int i=0;i<13;i++){
 		setCursorPos(centerW-24+i*4, height-4);
 		cout << block;
@@ -322,22 +336,24 @@ void Interface::hideHands(){
 		cout << block;
 	}
 
-	//Left cards
+	//Hides the left cards
 	for(int i=0;i<13;i++){
 		setCursorPos(3, 2+i*2);
 		cout << block << block;
 	}
 
-	//Right cards
+	//Hides the right cards
 	for(int i=0;i<13;i++){
 		setCursorPos(width-5, 2+i*2);
 		cout << block << block;
 	}
 
+	//Resets text position
 	setCursorPos(0, height);
 }
 
 void Interface::hideTrick(){
+	//Hides the value of the cards in the center
 	setCursorPos(centerW+3, centerH+2);
 	cout << "  ";
 	setCursorPos(centerW-5, centerH-2);
@@ -351,28 +367,33 @@ void Interface::hideTrick(){
 	setCursorPos(centerW+2, centerH-2);
 	cout << ' ';
 	
+	//Resets text position
 	setCursorPos(0, height);
 }
 
 void Interface::drawCard(Card& c, int hand, int slot){
-	//hands
+	//Hands
 	//0 - bottom
 	//1 - left
 	//2 - top
 	//3 - right
 	//4 - center
 
+	//Colors the values to match the suits
 	switch(c.getSuit()){
 	case hearts:
 	case diamonds:
+		//Light Red on Green
 		setColor(12,2);
 		break;
 	case clubs:
 	case spades:
+		//Black on Green
 		setColor(0,2);
 		break;
 	}
-	
+
+	//Draws the card on the screen based on the position above.
 	switch(hand){
 	case 0:
 		setCursorPos(centerW-24+slot*4, height-4);
@@ -419,6 +440,7 @@ void Interface::drawCard(Card& c, int hand, int slot){
 		}
 	}
 
+	//Resets curson poistion and text color.
 	setCursorPos(0, height);
 	setColor(15,2);
 }

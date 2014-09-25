@@ -1,16 +1,15 @@
-// Program2.cpp : Defines the entry point for the console application.
-//
+/*
+  File:			Hearts.cpp
+  Author:		Ryder Smith
+  Course:		COMP 220, Computer Programming II
+  Date:			20 September 2014
+  Description:  Entry point for the game of hearts
+*/
 #include "stdafx.h"
 #include "Game.h"
-#include "Deck.h"
 
 int main(){	
 	Game::startGame();
-	//Interface i;
-	//i.drawBoard();
-	//i.drawHands();
-
-	system("pause");
 	return 0;
 }
 

@@ -124,9 +124,11 @@ void Game::startRound(){
 		interfase.hideHands();
 	}while(i != leadPlayer && i < 5);
 	
+	//Finds who should take the trick and has them collect it.
 	leadPlayer = t.getCollector();
 	players[leadPlayer].collectTrick(t);
 
+	//Tells the users who got the trick and what the score of it was.
 	interfase.clearError();
 	string output = "Player " + to_string(leadPlayer) + " has collected the trick with a score of " + to_string(t.calculatePoints()) + ".\n";
 	interfase.printText(output.c_str());
@@ -141,23 +143,26 @@ void Game::showHand(Player &p){
 }
 
 void Game::askForCard(Player &p, Trick &t){
-	//Prompt for card
-	//system("pause");   
-	//TODO: list cards
-	int selection = 0;
 
+	//Asks which card should be played.
+	int selection = 0;
 	interfase.printText("Please select a card (1-13): ");
 	cin.clear();
 	cin.sync();
 	cin >> selection;
 	selection--;
 
+	//Verifies it is in the array.
+	//If it is not, that is handled by the next if statement.
 	Card toBeUsed;
 	if(selection>=0 && selection<=p.getHand().size()-1) toBeUsed = p.getHand().at(selection);
 
+	//Tells the user which card was played.
 	string output = "Selected card: " + toBeUsed.name();
 	interfase.printError(output.c_str());
 	
+	//If the card is vaild then it played.
+	//otherwise it shows an error and prompts again.
 	if(p.canPlayCard(toBeUsed, t) && (selection>=0 && selection<=p.getHand().size()-1)){
 		p.playCard(toBeUsed);
 		t.addCard(p.getPlayerNumber(), toBeUsed);
