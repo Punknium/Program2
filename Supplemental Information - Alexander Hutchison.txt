@@ -1,0 +1,10 @@
+Alexander Hutchison
+
+(a) How long did you spend on each part of this assignment?
+	About 7 hours, did not keep exact count.
+(b) Was the assignment difficult for you? Why or why not?
+	Not really, Great Leadership made this project far easier and faster then a solo project.
+(c) Did you enjoy working as a group to solve this problem? Why or why not? 
+	Yes, It gave me experience working in a group with subversion control instead of
+	passing the file back and forth that ive had to do up until now.
+
