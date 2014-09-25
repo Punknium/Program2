@@ -61,8 +61,8 @@ void Game::startRound(){
 	int i = leadPlayer;
 	do{
 		showHand(players[i]);
-		askForCard(players[i], t);
 		interfase.drawScore(players[i]);
+		askForCard(players[i], t);
 		i++;
 		if(i==4)i=0;
 		interfase.hideHands();
