@@ -49,19 +49,19 @@ void Interface::drawScore(Player& p){
 	switch(p.getPlayerNumber()){
 	case 0:
 		setCursorPos(16, height-7);
-		cout << "Player 0: ";
+		cout << "Player 0: " << p.getPlayerScore();
 		break;
 	case 1:
 		setCursorPos(10, 16);
-		cout << "Player 1: ";
+		cout << "Player 1: " << p.getPlayerScore();
 		break;
 	case 2:
 		setCursorPos(16, 6);
-		cout << "Player 2: ";
+		cout << "Player 2: " << p.getPlayerScore();
 		break;
 	case 3:
 		setCursorPos(width-22, 16);
-		cout << "Player 3: ";
+		cout << "Player 3: " << p.getPlayerScore();
 		break;
 	}
 }

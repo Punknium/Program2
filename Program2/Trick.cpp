@@ -10,6 +10,8 @@
 #include "Trick.h"
 #include "Card.h"
 
+bool Trick::heartsLead = false;
+
 Trick::Trick()
 {
 }
