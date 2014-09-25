@@ -28,7 +28,8 @@ public:
 	void printError(const char *text);
 	void clearText();
 	void clearError();
-	void drawScore(Player& p);
+	void drawScore(Player& p, int& totScore);
+	void drawRules();
 private:
 
 };

@@ -20,14 +20,16 @@ using std::to_string;
 Player Game::players[4];
 int Game::leadPlayer;
 Interface Game::interfase;
+int Game::totalScore[] = {0,0,0,0};
 
 void Game::startGame(){
+	interfase.drawRules();
 	interfase.drawBoard();
 	interfase.drawHands();
 	//Sets up the players
 	for(int i = 0; i<4; i++){
 		players[i] = Player(i);
-		interfase.drawScore(players[i]);
+		interfase.drawScore(players[i], totalScore[i]);
 	}
 	//Readys the deck and shuffles it
 	Deck d;
@@ -46,9 +48,63 @@ void Game::startGame(){
 	}
 	//Runs through all of the rounds
 	for(int i = 0; i < 13; i++){
-
 		startRound();
 	}
+
+	//Finds the player with the lowest score and says they are the winner
+	int lowestScore = 26;
+	vector<int> winners;
+	for(int i=0;i<4;i++){
+		if(players[i].getPlayerScore() == lowestScore) 
+			winners.push_back(i);
+		if(players[i].getPlayerScore() < lowestScore){
+			winners.clear();
+			winners.push_back(i);
+			lowestScore = players[i].getPlayerScore();
+		}
+	}
+	string output;
+	if(winners.size() < 2){
+		 output = "The winner is Player " + to_string(winners.at(0));
+	}else{
+		output = "The winners are Player " + to_string(winners.at(0));
+		for(int i = 1;i < winners.size();i++){
+			output += ", Player " + to_string(winners.at(i));
+		}
+	}
+	interfase.printError(output.c_str());
+
+	//Handles shoting the moon
+	for(int i=0;i<4;i++){
+		if(players[i].getPlayerScore() == 26){
+			players[i].addToPlayerScore(-26);
+			string output = "The moon was shot by Player " + to_string(i);
+			interfase.printError(output.c_str());
+			for(int j=0;j<4;j++){
+				if(i != j){
+				players[j].addToPlayerScore(26);
+				}
+			}
+		}
+	}
+
+	//Adds each player's score to their total score.
+	for(int i=0;i<4;i++){
+		totalScore[i] += players[i].getPlayerScore();
+	}
+
+	//Redraws the scores
+	for(int i = 0; i<4; i++){
+		interfase.drawScore(players[i], totalScore[i]);
+	}
+
+	//Asks if they want to play again.
+	interfase.printText("Play again?(y/n) ");
+	char input;
+	cin.clear();
+	cin >> input;
+	input = tolower(input);
+	if(input == 'y') startGame();
 }
 
 void Game::startRound(){
@@ -61,7 +117,7 @@ void Game::startRound(){
 	int i = leadPlayer;
 	do{
 		showHand(players[i]);
-		interfase.drawScore(players[i]);
+		interfase.drawScore(players[i], totalScore[i]);
 		askForCard(players[i], t);
 		i++;
 		if(i==4)i=0;
@@ -92,6 +148,7 @@ void Game::askForCard(Player &p, Trick &t){
 
 	interfase.printText("Please select a card (1-13): ");
 	cin.clear();
+	cin.sync();
 	cin >> selection;
 	selection--;
 

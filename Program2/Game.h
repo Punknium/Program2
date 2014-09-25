@@ -25,6 +25,7 @@ private:
 	static Player players[4];
 	static int leadPlayer;
 	static Interface interfase;
+	static int totalScore[4];
 };
 
 #endif

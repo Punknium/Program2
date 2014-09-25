@@ -11,6 +11,7 @@
 #include <iostream>
 #include <Windows.h>
 using std::cout;
+using std::endl;
 
 //Extended Ascii codes
 const char drt = 185;
@@ -45,23 +46,23 @@ Interface::Interface(){
 	system("color 2f");
 }
 
-void Interface::drawScore(Player& p){
+void Interface::drawScore(Player& p, int& totScore){
 	switch(p.getPlayerNumber()){
 	case 0:
 		setCursorPos(16, height-7);
-		cout << "Player 0: " << p.getPlayerScore();
+		cout << "Player 0: " << totScore << " + " << p.getPlayerScore();
 		break;
 	case 1:
 		setCursorPos(10, 16);
-		cout << "Player 1: " << p.getPlayerScore();
+		cout << "Player 1: " << totScore << " + " << p.getPlayerScore();
 		break;
 	case 2:
 		setCursorPos(16, 6);
-		cout << "Player 2: " << p.getPlayerScore();
+		cout << "Player 2: " << totScore << " + " << p.getPlayerScore();
 		break;
 	case 3:
-		setCursorPos(width-22, 16);
-		cout << "Player 3: " << p.getPlayerScore();
+		setCursorPos(width-27, 16);
+		cout << "Player 3: " << totScore << " + " << p.getPlayerScore();
 		break;
 	}
 }
@@ -92,6 +93,7 @@ void Interface::clearError(){
 
 //Default windows size is 80 x 25
 void Interface::drawBoard(){
+	system("cls");
 	//Top
 	cout << dul;
 	for(int i=2;i<width;i++) cout << dhl;
@@ -106,6 +108,52 @@ void Interface::drawBoard(){
 	cout << dll;
 	for(int i=2;i<width;i++) cout << dhl;
 	cout << dlr;
+}
+
+//Wrote by Ian
+void Interface::drawRules(){
+	system("mode con: cols=80 lines=42");
+	cout << "This is the game: HEARTS" << endl
+		<< "The object of the game is to be the player" << endl
+		<< "with the lowest score." << endl << endl;
+
+	cout << "The object of the game:" << endl
+		<< "Players do not want to end up with tricks containing hearts" << endl
+		<< "or the queen of spades." << endl << endl;
+
+	cout << "The number of players for the game is 4." << endl << endl;
+
+	cout << "The players are dealt thirteen cards and" << endl
+		<< "the player with the two of clubs goes first." << endl << endl;
+
+	cout << "The rules of the game:" << endl
+		<< "Passing the cards:" << endl
+		<< "Before the hand is played, each player chooses three cards" << endl
+		<< "and passes them to another player." << endl
+		<< "Players first pass to the player to their right." << endl
+		<< "Then the player passes the cards to the player to their left." << endl
+		<< "Lastly, the player passes the cards to the player across from them." << endl
+		<< "For the four round, the players don't pass at all and play with the" << endl
+		<< "cards dealt to them." << endl << endl;
+
+	cout << "The player with the two of clubs goes first." << endl
+		<< "Everyone must follow suit. If they don't have a card" << endl
+		<< "in the same suit as the lead card, then the player can" << endl
+		<< "play any card that they want." << endl << endl;
+
+	cout << "Scoring:" << endl
+		<< "At the end of each hand, the players count the number of hearts" << endl
+		<< "that they have, and taking the queen of spades costs that player" << endl
+		<< "to gain 13 points. The game ends when one player reaches or exceeds 100 points." << endl
+		<< "The winner of the game is the player with the fewest points." << endl << endl;
+
+	cout << "Shooting the moon:" << endl
+		<< "If one player manages to get all 26 points for that deal then that player" << endl
+		<< "gets zero points for that deal and all other players get 26 points instead." << endl << endl;
+
+	cout << "T suit is equal to Ten of suit." << endl << endl;
+	system("pause");
+	system("mode con: cols=80 lines=32");
 }
 
 void Interface::drawHands(){
