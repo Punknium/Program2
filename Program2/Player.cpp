@@ -54,7 +54,7 @@ Needs some work
 */
 bool Player::canPlayCard(Card &c, Trick& t)
 {
-	return true;//REMOVE THIS
+	//return true;//REMOVE THIS
 	if(t.leadCard().getSuit() == c.getSuit())
 		return true;
 	else
