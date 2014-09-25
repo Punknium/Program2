@@ -70,27 +70,6 @@ void Interface::clearError(){
 	for(int i=0;i<width-1;i++)cout<<" ";
 }
 
-void Interface::drawScore(Player& p){
-	switch(p.getPlayerNumber()){
-	case 0:
-		setCursorPos(16, height-7);
-		cout << "Player 0: ";
-		break;
-	case 1:
-		setCursorPos(10, 16);
-		cout << "Player 1: ";
-		break;
-	case 2:
-		setCursorPos(16, 6);
-		cout << "Player 2: ";
-		break;
-	case 3:
-		setCursorPos(width-22, 16);
-		cout << "Player 3: ";
-		break;
-	}
-}
-
 //Default windows size is 80 x 25
 void Interface::drawBoard(){
 	//Top
@@ -314,16 +293,7 @@ void Interface::drawCard(Card& c, int hand, int slot){
 	//2 - top
 	//3 - right
 	//4 - center
-	switch(c.getSuit()){
-	case hearts:
-	case diamonds:
-		setColor(12,2);
-		break;
-	case clubs:
-	case spades:
-		setColor(0,2);
-		break;
-	}
+
 	switch(hand){
 	case 0:
 		setCursorPos(centerW-24+slot*4, height-4);
@@ -371,7 +341,6 @@ void Interface::drawCard(Card& c, int hand, int slot){
 	}
 
 	setCursorPos(0, height);
-	setColor(15,2);
 }
 
 char Interface::suitToChar(Suit s){
@@ -408,6 +377,7 @@ void Interface::setCursorPos(int x, int y){
 	//Set the position
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
 }
+
 
 /*	0 = Black       8		= Gray
     1 = Blue        9		= Light Blue

@@ -28,7 +28,6 @@ public:
 	void printError(const char *text);
 	void clearText();
 	void clearError();
-	void drawScore(Player& p);
 private:
 
 };
