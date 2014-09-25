@@ -26,16 +26,17 @@ int Trick::calculatePoints()
 	int i = 0; // card in the list
 	for (int i = 0; i < 4; i++)//while card trick list is not emepty
 	{
-		if (cards[i].getSuit() == 2)//if the card is heart add one point to points
+		if (cards[i].getSuit() == Suit::hearts)//if the card is heart add one point to points
 		{
+			heartsLead = true;
 			points = points + 1;
 		}
-		if (cards[i].getSuit() == 3 && cards[i].getValue() == 11) // This calculates the points for the queen of spades.
+		if (cards[i].getSuit() == Suit::spades && cards[i].getValue() == Value::queen) // This calculates the points for the queen of spades.
 		{
 			points = points + 13;
 		}
 	}
-	return 0;
+	return points;
 }
 
 void Trick::addCard(int playerNumber, const Card& c)
@@ -64,24 +65,17 @@ int Trick::getCollector()
 	return playerHighestCard;
 }
 
-bool Trick::isTheMoonShot()
-{
-	// if player has collected all 26 points then that player gets 0 points
-	// and the others players get 26 points.
-	return false;
-}
-
 bool Trick::canHeartsLead()
 {
-	return false;
+	return heartsLead;
 }
 
 Card Trick::leadCard()
 {
-	return Card();
+	return cards[leadPlayer];
 }
 
 int Trick::getLeadPlayer()
 {
-	return 0;
+	return leadPlayer;
 }

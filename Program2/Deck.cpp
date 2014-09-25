@@ -15,7 +15,16 @@ using std::time;
 using std::swap;
 
 
-Deck::Deck(){}
+Deck::Deck()
+{
+	for (int i = 0; i < 4; i++)
+	{
+		for (int j = 0; j < 13; j++)
+		{
+			deck.push_back(Card((Value)j, (Suit)i));
+		}
+	}
+}
 
 /*
 Functions starts here!!
@@ -36,5 +45,6 @@ Deals the cards out to the players.
 */
 void Deck::drawCard(Player& p)
 {
-	p.getHand();
+	p.receiveCard(deck.back());
+	deck.pop_back();
 }
