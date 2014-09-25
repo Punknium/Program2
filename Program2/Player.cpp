@@ -12,9 +12,11 @@
 
 Player::Player(){
 	playerNumber = 000; //Set default number to 000, assuming we wont have more then 999 players.
+	score = 0;
 }
 Player::Player(int pn){ //Changed the variable name, didnt like how it was exactly the same as an out of scope variable that was being referenced
 	playerNumber = pn;
+	score = 0;
 }
 
 /*
@@ -54,8 +56,31 @@ Needs some work
 */
 bool Player::canPlayCard(Card &c, Trick& t)
 {
-	return true;//REMOVE THIS
-	if(t.leadCard().getSuit() == c.getSuit())
+	if((c.getSuit() != Suit::clubs)&&(c.getValue() != Value::deuce))
+	{
+		for(int i = 0; i < hand.size(); i++)
+		{
+			if((hand[i].getSuit() == Suit::clubs) && (hand[i].getValue() == Value::deuce))
+				return false;
+		}
+	}
+
+	else if(t.getLeadPlayer() == playerNumber)
+	{
+		if(t.canHeartsLead())
+		{
+			return true;
+		}
+		else if(c.getSuit() == Suit::hearts)
+		{
+			return false;
+		}
+		else
+		{
+			return true;
+		}
+	}
+	else if(t.leadCard().getSuit() == c.getSuit())
 		return true;
 	else
 		for(int i=0; i < hand.size(); i++)
