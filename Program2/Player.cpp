@@ -56,13 +56,12 @@ Needs some work
 */
 bool Player::canPlayCard(Card &c, Trick& t)
 {
-	if((c.getSuit() != Suit::clubs)&&(c.getValue() != Value::deuce))
+	if(hasCard(Card(Value::deuce, Suit::clubs)))
 	{
-		for(int i = 0; i < hand.size(); i++)
-		{
-			if((hand[i].getSuit() == Suit::clubs) && (hand[i].getValue() == Value::deuce))
-				return false;
-		}
+		if((c.getSuit() == Suit::clubs) && (c.getValue() == Value::deuce))
+			return true;
+		else
+			return false;
 	}
 
 	else if(t.getLeadPlayer() == playerNumber)
