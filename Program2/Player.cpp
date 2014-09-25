@@ -12,9 +12,11 @@
 
 Player::Player(){
 	playerNumber = 000; //Set default number to 000, assuming we wont have more then 999 players.
+	score = 0;
 }
 Player::Player(int pn){ //Changed the variable name, didnt like how it was exactly the same as an out of scope variable that was being referenced
 	playerNumber = pn;
+	score = 0;
 }
 
 /*
