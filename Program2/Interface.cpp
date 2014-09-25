@@ -45,6 +45,26 @@ Interface::Interface(){
 	system("color 2f");
 }
 
+void Interface::drawScore(Player& p){
+	switch(p.getPlayerNumber()){
+	case 0:
+		setCursorPos(16, height-7);
+		cout << "Player 0: ";
+		break;
+	case 1:
+		setCursorPos(10, 16);
+		cout << "Player 1: ";
+		break;
+	case 2:
+		setCursorPos(16, 6);
+		cout << "Player 2: ";
+		break;
+	case 3:
+		setCursorPos(width-22, 16);
+		cout << "Player 3: ";
+		break;
+	}
+}
 
 void Interface::printError(const char *text){
 	clearError();
@@ -294,6 +314,17 @@ void Interface::drawCard(Card& c, int hand, int slot){
 	//3 - right
 	//4 - center
 
+	switch(c.getSuit()){
+	case hearts:
+	case diamonds:
+		setColor(12,2);
+		break;
+	case clubs:
+	case spades:
+		setColor(0,2);
+		break;
+	}
+	
 	switch(hand){
 	case 0:
 		setCursorPos(centerW-24+slot*4, height-4);
@@ -341,6 +372,7 @@ void Interface::drawCard(Card& c, int hand, int slot){
 	}
 
 	setCursorPos(0, height);
+	setColor(15,2);
 }
 
 char Interface::suitToChar(Suit s){

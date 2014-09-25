@@ -27,6 +27,7 @@ void Game::startGame(){
 	//Sets up the players
 	for(int i = 0; i<4; i++){
 		players[i] = Player(i);
+		interfase.drawScore(players[i]);
 	}
 	//Readys the deck and shuffles it
 	Deck d;
@@ -61,25 +62,20 @@ void Game::startRound(){
 	do{
 		showHand(players[i]);
 		askForCard(players[i], t);
+		interfase.drawScore(players[i]);
 		i++;
 		if(i==4)i=0;
-		//interfase.hideHands();
+		interfase.hideHands();
 	}while(i != leadPlayer && i < 5);
 	
 	leadPlayer = t.getCollector();
-	if(t.isTheMoonShot()){
-		if(leadPlayer != 0) players[0].addToPlayerScore(26);
-		if(leadPlayer != 1) players[1].addToPlayerScore(26);
-		if(leadPlayer != 2) players[2].addToPlayerScore(26);
-		if(leadPlayer != 3) players[3].addToPlayerScore(26);
-	}else{
-		players[leadPlayer].collectTrick(t);
-	}
+	players[leadPlayer].collectTrick(t);
 
 	interfase.clearError();
 	string output = "Player " + to_string(leadPlayer) + " has collected the trick with a score of " + to_string(t.calculatePoints()) + ".\n";
 	interfase.printText(output.c_str());
 	system("pause");
+	interfase.clearError();
 }
 
 void Game::showHand(Player &p){
@@ -100,8 +96,11 @@ void Game::askForCard(Player &p, Trick &t){
 	selection--;
 
 	Card toBeUsed;
-	if(selection>=0 && selection<p.getHand().size()-1) toBeUsed = p.getHand().at(selection);
+	if(selection>=0 && selection<=p.getHand().size()-1) toBeUsed = p.getHand().at(selection);
 
+	string output = "Selected card: " + toBeUsed.name();
+	interfase.printError(output.c_str());
+	
 	if(p.canPlayCard(toBeUsed, t) && (selection>=0 && selection<=p.getHand().size()-1)){
 		p.playCard(toBeUsed);
 		t.addCard(p.getPlayerNumber(), toBeUsed);
