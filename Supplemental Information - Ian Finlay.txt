@@ -1,0 +1,10 @@
+Ian Finaly
+
+(a) How long did you spend on each part of this assignment?
+	I spent about two days on the deck class and about three days on the trick class.
+(b) Was the assignment difficult for you? Why or why not?
+	Yes, the assignment was a little difficult especially the trick class 
+		because you had to reference a lot of variables from another class.
+(c) Did you enjoy working as a group to solve this problem? Why or why not? 
+	Yes, I enjoyed working with my group as they were helpful in correcting mistakes 
+		or giving ideas about how to go about one function or another.

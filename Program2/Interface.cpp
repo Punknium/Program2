@@ -121,7 +121,7 @@ void Interface::drawBoard(){
 //Used to show all of the rules before the game starts
 void Interface::drawRules(){
 	//Resizes the windows so all lines are shown
-	system("mode con: cols=80 lines=42");
+	system("mode con: cols=80 lines=33");
 	//Couts all the rules
 	cout << "This is the game: HEARTS" << endl
 		<< "The object of the game is to be the player" << endl
@@ -136,15 +136,7 @@ void Interface::drawRules(){
 	cout << "The players are dealt thirteen cards and" << endl
 		<< "the player with the two of clubs goes first." << endl << endl;
 
-	cout << "The rules of the game:" << endl
-		<< "Passing the cards:" << endl
-		<< "Before the hand is played, each player chooses three cards" << endl
-		<< "and passes them to another player." << endl
-		<< "Players first pass to the player to their right." << endl
-		<< "Then the player passes the cards to the player to their left." << endl
-		<< "Lastly, the player passes the cards to the player across from them." << endl
-		<< "For the four round, the players don't pass at all and play with the" << endl
-		<< "cards dealt to them." << endl << endl;
+	cout << "The rules of the game:" << endl << endl;
 
 	cout << "The player with the two of clubs goes first." << endl
 		<< "Everyone must follow suit. If they don't have a card" << endl
